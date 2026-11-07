@@ -1,12 +1,14 @@
 # SHN-MEDIAPIPE
 ![Project Cover](assets/cover.jpeg)
-#  [Your Project Name]
+#  [KARSHAKA MITRA]
 
 ### 💡 What's the idea?
-[Tell us what you built and what it does. Keep it short!]
+# 🌱 Karshaka Mitra
+
+A gesture-controlled plant-care assistant built using Python, OpenCV, and MediaPipe. It uses hand gestures to navigate an interactive Malayalam interface that provides basic crop-care information and solutions for common plant problems.
 
 ### 🌐 Check it out!
-- **Live Website:** [Drop your link here / N/A]
+- **Live Website:** [ N/A]
 - **GitHub Repo:** [Drop your repository link here]
 
 ### 🛠️ What did you use?

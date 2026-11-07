@@ -1,14 +1,12 @@
 
-# SHN-MEDIAPIPE
-![Project Cover](assets/cover.jpeg)
-#  [KARSHAKA MITRA]
+
+ [KARSHAKA MITRA]
 <p align="center">
   <img src="screenshots/karshakamitra.png" width="100%">
 </p>
 
-# SHN-MEDIAPIPE
-![Project Cover](assets/cover.jpeg)
-#  [KARSHAKA MITRA]
+
+
 
 ### 💡 What's the idea?
 # 🌱 Karshaka Mitra

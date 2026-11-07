@@ -1,6 +1,7 @@
 import cv2
 import mediapipe as mp
 import time
+import math
 
 # 1. Initialise MediaPipe Tasks
 BaseOptions = mp.tasks.BaseOptions
@@ -37,6 +38,25 @@ def is_pointing(hand):
     pinky_folded = hand[20].y > hand[18].y
 
     return index_up and middle_folded and ring_folded and pinky_folded
+def is_pinching(hand, width, height):
+
+    thumb_x = hand[4].x * width
+    thumb_y = hand[4].y * height
+
+    index_x = hand[8].x * width
+    index_y = hand[8].y * height
+
+    distance = math.hypot(
+        thumb_x - index_x,
+        thumb_y - index_y
+    )
+
+    palm_size = math.hypot(
+        (hand[0].x - hand[9].x) * width,
+        (hand[0].y - hand[9].y) * height
+    )
+
+    return distance < palm_size * 0.25
 
 # 4. Open webcam
 cap = cv2.VideoCapture(0)
@@ -116,15 +136,25 @@ with HandLandmarker.create_from_options(options) as landmarker:
                         -1
                     )
                 if is_pointing(hand_landmarks):
-    cv2.putText(
-        frame,
-        "POINTING",
-        (50, 50),
-        cv2.FONT_HERSHEY_SIMPLEX,
-        1,
-        (0, 255, 0),
-        2
-    )
+                    cv2.putText(
+                        frame,
+                        "POINTING",
+                        (50, 50),
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        1,
+                        (0, 255, 0),
+                        2
+                    )
+                if is_pinching(hand_landmarks, width, height):
+                    cv2.putText(
+                        frame,
+                        "PINCHING",
+                        (50, 100),
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        1,
+                        (255, 0, 0),
+                        2
+                    )
 
         # Display webcam
         cv2.imshow("GardenHands - Hand Tracking", frame)
